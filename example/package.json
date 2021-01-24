@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "license": "BSD-3-Clause",
   "scripts": {
     "build": "next build && next export",
