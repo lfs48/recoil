@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "yarn build:hook && yarn build:example",
+    "build:example": "yarn workspace example build",
+    "build:hook": "yarn workspace @upsect/recoil build",
+    "bump": "yarn workspace @upsect/recoil bump",
+    "develop": "concurrently -n Hook,Example \"yarn watch:hook\" \"yarn watch:example\"",
+    "watch:example": "yarn workspace example develop",
+    "watch:hook": "yarn workspace @upsect/recoil watch",
+    "test": "yarn workspace @upsect/recoil test"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "eslint": "^7.16.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.21.5"
+  },
+  "workspaces": {
+    "packages": [
+      "example",
+      "hook"
+    ],
+    "nohoist": [
+      "**/@upsect/recoil"
+    ]
+  },
+  "license": "BSD-3-Clause"
+}
