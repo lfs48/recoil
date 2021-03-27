@@ -2,9 +2,8 @@
   <img src="recoil.png" alt=""><br>
   recoil<br>
   <p align="center">
-    <a href="https://twitter.com/nallenscott">
-      <img src="https://img.shields.io/badge/contact-nallenscott-blue?style=flat" alt="contact">
-    </a>
+    <a href="https://www.codacy.com/gh/upsect/recoil/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=upsect/recoil&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/36ebc881f5b44418900476fa3782e8e8"/></a>
+    <a href="https://www.codacy.com/gh/upsect/recoil/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=upsect/recoil&amp;utm_campaign=Badge_Coverage"><img src="https://app.codacy.com/project/badge/Coverage/36ebc881f5b44418900476fa3782e8e8"/></a>
   </p>
 </h1>
 
