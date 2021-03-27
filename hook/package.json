@@ -24,7 +24,8 @@
     "bump": "npm version",
     "prepublishOnly": "yarn build",
     "watch": "nodemon --watch src --exec \"yarn build\"",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",

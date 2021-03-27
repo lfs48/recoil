@@ -8,7 +8,8 @@
     "develop": "concurrently -n Hook,Example \"yarn watch:hook\" \"yarn watch:example\"",
     "watch:example": "yarn workspace example develop",
     "watch:hook": "yarn workspace @upsect/recoil watch",
-    "test": "yarn workspace @upsect/recoil test"
+    "test": "yarn workspace @upsect/recoil test",
+    "coverage": "yarn workspace @upsect/recoil coverage"
   },
   "devDependencies": {
     "concurrently": "^6.0.0",

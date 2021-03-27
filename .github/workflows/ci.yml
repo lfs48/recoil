@@ -1,31 +1,39 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: CI
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  test:
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 15.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+        platform: [ubuntu-latest]
+        node: [12.x, 14.x, 15.x]
+    name: test/node ${{matrix.node}}/${{matrix.platform}}
+    runs-on: ${{matrix.platform}}
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@main
+    - uses: actions/setup-node@main
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${{matrix.node}}
     - run: npm install -g yarn
     - run: yarn install
     - run: yarn build
     - run: yarn test
+  coverage:
+    needs: [test]
+    name: test/coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+    - uses: actions/setup-node@main
+      with:
+        node-version: 15
+    - run: npm install -g yarn
+    - run: yarn install
+    - run: yarn build
+    - run: yarn coverage
+    - name: Run codacy coverage reporter
+      uses: codacy/codacy-coverage-reporter-action@master
+      with:
+        project-token: ${{secrets.CODACY_PROJECT_TOKEN}}
+        coverage-reports: hook/coverage/lcov.info

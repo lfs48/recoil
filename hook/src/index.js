@@ -1,3 +1,1 @@
-import { useViewport } from './useViewport'
-
-export { useViewport }
+export { useViewport } from './useViewport'
