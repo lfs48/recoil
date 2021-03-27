@@ -29,7 +29,7 @@ export const useViewport = (queries = {}) => {
        * @return {String}     Key of active breakpoint
        */
       const min = (min, k) => {
-        min = parseInt(min)
+        min = parseInt(min, 10)
         b = w >= min ? k : b
       }
 
@@ -41,7 +41,7 @@ export const useViewport = (queries = {}) => {
        * @return {String}     Key of active breakpoint
        */
       const max = (max, k) => {
-        max = parseInt(max)
+        max = parseInt(max, 10)
         b = w <= max ? k : b
       }
 
@@ -54,8 +54,8 @@ export const useViewport = (queries = {}) => {
        * @return {String}     Key of active breakpoint
        */
       const rng = (min, max, k) => {
-        min = parseInt(min)
-        max = parseInt(max)
+        min = parseInt(min, 10)
+        max = parseInt(max, 10)
         b = w >= min && w <= max ? k : b
       }
 
