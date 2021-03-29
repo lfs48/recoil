@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import * as Recoil from '@upsect/recoil'
+import * as Recoil from './../../hook/src'
 import { screens } from 'tailwindcss/defaultTheme'
 
 export default function Home () {

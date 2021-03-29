@@ -24,9 +24,6 @@
     "packages": [
       "example",
       "hook"
-    ],
-    "nohoist": [
-      "**/@upsect/recoil"
     ]
   },
   "license": "BSD-3-Clause"
