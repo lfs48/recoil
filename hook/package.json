@@ -1,6 +1,6 @@
 {
   "name": "@upsect/recoil",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React hook for just-in-time component rendering, with first-class support for Tailwind CSS.",
   "license": "BSD-3-Clause",
   "author": "Nathan Allen <nallen@upsect.com>",
@@ -17,7 +17,9 @@
     "media-queries",
     "breakpoints",
     "tailwind-css",
-    "just-in-time"
+    "just-in-time",
+    "viewport-dimensions",
+    "pinpoint-accuracy"
   ],
   "scripts": {
     "build": "babel src --out-dir dist",
