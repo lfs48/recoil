@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "license": "BSD-3-Clause",
   "scripts": {
     "build": "next build && next export",
@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "^10.0.9",
+    "next": "^10.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
