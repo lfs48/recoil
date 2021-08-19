@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import * as Recoil from '../src'
 import * as screens from './fixtures/screens'
 import { renderHook, act } from '@testing-library/react-hooks'
