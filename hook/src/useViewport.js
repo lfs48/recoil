@@ -8,6 +8,8 @@ import {
   parseInt
 } from 'lodash'
 
+const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+
 export const useViewport = (queries = {}) => {
   const [viewportSize, setViewportSize] = React.useState({
     currentWidth: undefined,
@@ -85,8 +87,8 @@ export const useViewport = (queries = {}) => {
       })
 
       setViewportSize({
-        currentWidth: window.innerWidth,
-        currentHeight: window.innerHeight,
+        currentWidth: isMobileDevice ? window.width : window.innerWidth,
+        currentHeight: isMobileDevice ? window.height : window.innerHeight,
         activeBreakpoint: b
       })
     }
