@@ -8,12 +8,10 @@ import {
   parseInt
 } from 'lodash'
 
-const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
-
 export const useViewport = (queries = {}) => {
   const [viewportSize, setViewportSize] = React.useState({
-    currentWidth: undefined,
-    currentHeight: undefined,
+    currentWidth: windowWidth(),
+    currentHeight: windowHeight(),
     activeBreakpoint: undefined
   })
 
@@ -21,7 +19,7 @@ export const useViewport = (queries = {}) => {
     let b // breakpoint
 
     const handleResize = () => {
-      const w = window.innerWidth
+      const w = windowWidth()
 
       /**
        * Evaluates `min` against the current screen width.
@@ -87,8 +85,8 @@ export const useViewport = (queries = {}) => {
       })
 
       setViewportSize({
-        currentWidth: isMobileDevice ? window.width : window.innerWidth,
-        currentHeight: isMobileDevice ? window.height : window.innerHeight,
+        currentWidth: windowWidth(),
+        currentHeight: windowHeight(),
         activeBreakpoint: b
       })
     }
@@ -101,4 +99,16 @@ export const useViewport = (queries = {}) => {
   }, [])
 
   return viewportSize
+}
+
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)
+}
+
+function windowWidth() {
+  return isMobileDevice ? window.width : window.innerWidth
+}
+
+function windowHeight() {
+  return isMobileDevice ? window.height : window.innerHeight
 }
