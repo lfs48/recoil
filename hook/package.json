@@ -37,7 +37,7 @@
     "@testing-library/react-hooks": "^7.0.1",
     "jest": "^27.0.6",
     "mq-polyfill": "^1.1.8",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.15"
   },
   "dependencies": {
     "lodash": "^4.17.21"
