@@ -30,12 +30,12 @@
     "coverage": "jest --coverage"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.8",
-    "@babel/core": "^7.15.0",
-    "@babel/preset-env": "^7.15.0",
-    "@babel/preset-react": "^7.14.5",
-    "@testing-library/react-hooks": "^7.0.1",
-    "jest": "^27.0.6",
+    "@babel/cli": "^7.17.0",
+    "@babel/core": "^7.17.2",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@testing-library/react-hooks": "^7.0.2",
+    "jest": "^27.5.1",
     "mq-polyfill": "^1.1.8",
     "nodemon": "^2.0.15"
   },
