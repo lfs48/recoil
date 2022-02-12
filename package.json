@@ -5,6 +5,7 @@
     "build:example": "yarn workspace example build",
     "build:hook": "yarn workspace @upsect/recoil build",
     "bump": "yarn workspace @upsect/recoil bump",
+    "changelog": "yarn auto-changelog -p && git add CHANGELOG.md",
     "develop": "concurrently -n Hook,Example \"yarn watch:hook\" \"yarn watch:example\"",
     "watch:example": "yarn workspace example develop",
     "watch:hook": "yarn workspace @upsect/recoil watch",
@@ -12,6 +13,7 @@
     "coverage": "yarn workspace @upsect/recoil coverage"
   },
   "devDependencies": {
+    "auto-changelog": "^2.4.0",
     "concurrently": "^7.0.0",
     "eslint": "^8.9.0",
     "eslint-config-standard": "^16.0.3",
