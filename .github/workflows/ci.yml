@@ -14,7 +14,9 @@ jobs:
     - run: yarn coverage
 
     - name: Run codacy coverage reporter
-      if: secrets.CODACY_PROJECT_TOKEN != null
+      env:
+         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      if: env.CODACY_PROJECT_TOKEN != null
       uses: codacy/codacy-coverage-reporter-action@master
       with:
         project-token: ${{secrets.CODACY_PROJECT_TOKEN}}
