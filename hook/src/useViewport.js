@@ -10,9 +10,9 @@ import { screens } from 'tailwindcss/defaultTheme';
 
 export const useViewport = (queries = screens) => {
   const [viewportSize, setViewportSize] = React.useState({
-    currentWidth: windowWidth(),
-    currentHeight: windowHeight(),
-    isMobile: isMobileDevice() ? true : isMobileDimensions( windowWidth() ),
+    currentWidth: getWindowWidth(),
+    currentHeight: getWindowHeight(),
+    isMobileDevice: isMobileDevice(),
     activeBreakpoint: undefined
   })
 
@@ -20,7 +20,7 @@ export const useViewport = (queries = screens) => {
     let b // breakpoint
 
     const handleResize = () => {
-      const w = windowWidth()
+      const w = getWindowWidth()
 
       /**
        * Evaluates `min` against the current screen width.
@@ -85,15 +85,12 @@ export const useViewport = (queries = screens) => {
         }
       })
 
-      const newViewportSize = {
-        currentWidth: windowWidth(),
-        currentHeight: windowHeight(),
-        isMobile: isMobileDevice() ? true : isMobileDimensions( windowWidth() ),
+      setViewportSize({
+        currentWidth: getWindowWidth(),
+        currentHeight: getWindowHeight(),
+        isMobileDevice: isMobileDevice(),
         activeBreakpoint: b
-      }
-
-      setViewportSize(newViewportSize)
-
+      })
     }
 
     window.addEventListener('resize', handleResize)
@@ -106,18 +103,33 @@ export const useViewport = (queries = screens) => {
   return viewportSize
 }
 
-function isMobileDevice() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)
+function getWindowWidth () {
+  return typeof window !== 'undefined'
+    ? isMobileAgent()
+      ? window.screen.width
+      : window.innerWidth
+    : 0
 }
 
-function isMobileDimensions(width) {
+function getWindowHeight () {
+  return typeof window !== 'undefined'
+    ? isMobileAgent()
+      ? window.screen.height
+      : window.innerHeight
+    : 0
+}
+
+function isMobileAgent () {
+  return typeof navigator !== 'undefined'
+  ? /Android|webOS|iPhone|iPad|iPod|BlackBerry/i
+     .test(navigator.userAgent)
+  : false
+}
+
+function isMobileDimensions (width) {
   return width < 769
 }
 
-function windowWidth() {
-  return isMobileDevice() ? window.screen.width : window.innerWidth
-}
-
-function windowHeight() {
-  return isMobileDevice() ? window.screen.height : window.innerHeight
+function isMobileDevice () {
+  return isMobileAgent() || isMobileDimensions(getWindowWidth())
 }

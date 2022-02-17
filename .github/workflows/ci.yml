@@ -20,6 +20,7 @@ jobs:
     - run: yarn build
     - run: yarn test
   coverage:
+    if: github.repository_owner == 'upsect'
     needs: [test]
     name: test/coverage
     runs-on: ubuntu-latest
