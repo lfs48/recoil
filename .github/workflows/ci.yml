@@ -20,7 +20,7 @@ jobs:
     - run: yarn build
     - run: yarn test
   coverage:
-    if: github.repository_owner == 'upsect'
+    if: secrets.CODACY_PROJECT_TOKEN != null
     needs: [test]
     name: test/coverage
     runs-on: ubuntu-latest
