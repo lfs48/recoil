@@ -1,5 +1,4 @@
 import * as React from 'react'
-
 import {
   each,
   isArray,
@@ -7,11 +6,13 @@ import {
   isString,
   parseInt
 } from 'lodash'
+import { screens } from 'tailwindcss/defaultTheme';
 
-export const useViewport = (queries = {}) => {
+export const useViewport = (queries = screens) => {
   const [viewportSize, setViewportSize] = React.useState({
     currentWidth: windowWidth(),
     currentHeight: windowHeight(),
+    isMobile: isMobileDevice() ? true : isMobileDimensions( windowWidth() ),
     activeBreakpoint: undefined
   })
 
@@ -84,11 +85,15 @@ export const useViewport = (queries = {}) => {
         }
       })
 
-      setViewportSize({
+      const newViewportSize = {
         currentWidth: windowWidth(),
         currentHeight: windowHeight(),
+        isMobile: isMobileDevice() ? true : isMobileDimensions( windowWidth() ),
         activeBreakpoint: b
-      })
+      }
+
+      setViewportSize(newViewportSize)
+
     }
 
     window.addEventListener('resize', handleResize)
@@ -105,10 +110,14 @@ function isMobileDevice() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)
 }
 
+function isMobileDimensions(width) {
+  return width < 769
+}
+
 function windowWidth() {
-  return isMobileDevice ? window.width : window.innerWidth
+  return isMobileDevice() ? window.screen.width : window.innerWidth
 }
 
 function windowHeight() {
-  return isMobileDevice ? window.height : window.innerHeight
+  return isMobileDevice() ? window.screen.height : window.innerHeight
 }
