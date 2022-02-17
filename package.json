@@ -5,6 +5,7 @@
     "build:example": "yarn workspace example build",
     "build:hook": "yarn workspace @upsect/recoil build",
     "bump": "yarn workspace @upsect/recoil bump",
+    "changelog": "yarn auto-changelog -p && git add CHANGELOG.md",
     "develop": "concurrently -n Hook,Example \"yarn watch:hook\" \"yarn watch:example\"",
     "watch:example": "yarn workspace example develop",
     "watch:hook": "yarn workspace @upsect/recoil watch",
@@ -12,13 +13,14 @@
     "coverage": "yarn workspace @upsect/recoil coverage"
   },
   "devDependencies": {
-    "concurrently": "^6.2.1",
-    "eslint": "^7.32.0",
+    "auto-changelog": "^2.4.0",
+    "concurrently": "^7.0.0",
+    "eslint": "^8.9.0",
     "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-react": "^7.24.0"
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0"
   },
   "workspaces": {
     "packages": [
