@@ -4,36 +4,17 @@ on: [push, pull_request]
 
 jobs:
   test:
-    strategy:
-      matrix:
-        platform: [ubuntu-latest]
-        node: [12.x, 14.x, 15.x]
-    name: test/node ${{matrix.node}}/${{matrix.platform}}
-    runs-on: ${{matrix.platform}}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@main
-    - uses: actions/setup-node@main
-      with:
-        node-version: ${{matrix.node}}
     - run: npm install -g yarn
     - run: yarn install
     - run: yarn build
     - run: yarn test
-  coverage:
-    if: secrets.CODACY_PROJECT_TOKEN != null
-    needs: [test]
-    name: test/coverage
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@main
-    - uses: actions/setup-node@main
-      with:
-        node-version: 15
-    - run: npm install -g yarn
-    - run: yarn install
-    - run: yarn build
     - run: yarn coverage
+
     - name: Run codacy coverage reporter
+      if: secrets.CODACY_PROJECT_TOKEN != null
       uses: codacy/codacy-coverage-reporter-action@master
       with:
         project-token: ${{secrets.CODACY_PROJECT_TOKEN}}
